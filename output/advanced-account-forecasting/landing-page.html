@@ -49,35 +49,11 @@ body {
 }
 ::selection { background: var(--dxf-red-100); color: var(--dxf-red-700); }
 
-.topnav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 32px;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border-1);
-}
-.topnav .wordmark { height: 28px; width: auto; display: block; }
-.topnav nav { display: flex; gap: 8px; align-items: center; }
-.topnav nav a {
-  font: 600 13px/1 var(--font-body);
-  color: var(--fg-2);
-  text-decoration: none;
-  padding: 7px 12px;
-  border-radius: 8px;
-  transition: all 140ms var(--ease-out);
-}
-.topnav nav a:hover { color: var(--fg-1); background: var(--surface-sunken); }
-
 .container { max-width: 880px; margin: 0 auto; padding: 0 32px; }
 
 .hero {
   position: relative;
-  padding: 80px 0 56px;
+  padding: 56px 0;
   overflow: hidden;
 }
 .hero .halftone {
@@ -239,29 +215,9 @@ ul.outcomes li::before {
   line-height: 1.6;
 }
 
-footer.foot {
-  padding: 40px 32px;
-  text-align: center;
-  color: var(--fg-3);
-  font: 500 12px/1.5 var(--font-body);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  border-top: 1px solid var(--border-1);
-  background: var(--bg);
-}
 </style>
 </head>
 <body>
-
-<header class="topnav">
-  <img src="wordmark-dark.webp" alt="DX Foundation" class="wordmark">
-  <nav>
-    <a href="#">Strategy</a>
-    <a href="#">Services</a>
-    <a href="#">Partners</a>
-    <a href="#">Insights</a>
-  </nav>
-</header>
 
 <main>
   <div class="container">
@@ -351,8 +307,6 @@ footer.foot {
 
   </div>
 </main>
-
-<footer class="foot">DX Foundation &middot; Strategy First. Technology Second.</footer>
 
 </body>
 </html>

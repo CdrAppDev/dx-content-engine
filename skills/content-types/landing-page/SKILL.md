@@ -109,3 +109,12 @@ doesn't move the metric"). If unsure, omit.
 
 Pure markdown. Start with `# {H1}`. No preamble. No code fences around the
 whole document. No "here is your landing page." Just the page.
+
+## When rendering an HTML preview
+
+If you're also rendering the LP as a standalone HTML file for visual review:
+
+- **The LP is a content block, not a standalone website.** It gets embedded into the existing DXF marketing site, which already provides its own nav, footer, and chrome.
+- **Output content only.** No top navigation. No site-level footer with the wordmark or "DX Foundation · Strategy First" tagline. No utility links. Start the body with the hero section; end it with the close CTA.
+- **Keep design tokens.** Use the DXF type, color, and spacing tokens so the visual feels right — the assumption is the parent site uses the same tokens.
+- This applies to one-off preview HTML in `output/{slug}/landing-page.html` as well as any export the web app generates.
