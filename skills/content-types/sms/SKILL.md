@@ -46,10 +46,10 @@ note about the consent constraint.
 
 One of these shapes — pick whichever fits the context:
 
-1. **Reference + ask**: "Loved the conversation about {topic}. Sending the brief we discussed — want a 15 with our practice lead next week?"
-2. **Specific observation + ask**: "Saw the {trigger}. Curious if {related operating reality} is on your radar — open to a quick call?"
+1. **Reference + ask**: "Great talking yesterday — here's the page I mentioned on {topic the conversation was about}. 15 min next week to walk through it? {url}"
+2. **Specific observation + ask**: "Saw the {trigger from their company}. Curious if {related operating reality} is on your radar — open to a quick call?"
 3. **Confirm**: "Confirming Thursday 2pm with {name} — anything specific you want covered?"
-4. **Resource handoff**: "Here's the page on {outcome}: {short-url}. The bad-fit signals are at the bottom — those are the parts most decks skip."
+4. **Resource handoff**: "Here's the page we discussed on {outcome in plain English}: {short-url}. Worth 15 min to talk through?"
 
 ## Voice notes
 
@@ -57,6 +57,16 @@ One of these shapes — pick whichever fits the context:
 - Contractions are encouraged.
 - Sentence fragments are fine when they read like real texts.
 - Don't sound like a marketing automation. The recipient has met you (or someone at DXF).
+
+## Plain-language rule (this is the one most worth getting right)
+
+An SMS is too short to carry insider vocabulary. **Write it so a friend who's never seen the LP could parse it in one read.** Specifically:
+
+- **Don't quote section names from the LP** ("bad-fit signals," "the shift," "what you can expect") — those are headings in a document the reader hasn't opened yet. Refer to the LP topic in plain English instead ("the page on moving forecast accuracy," "what we discussed about close cycle").
+- **Don't use content-engine internal vocabulary** in customer-facing SMS — words like "decks," "spin-offs," "derivatives," "framing," "positioning" belong in our work, not in a text to a prospect.
+- **Reference the recent conversation specifically** if you have it — "Great talking yesterday," "Good catching up Tuesday," "After our call." Vague references like "After our chat" lose the warmth.
+- **Make the ask concrete**: name the action and the time commitment ("15 min next week to walk through it?"), not just "let me know."
+- **One topic, one link, one ask.** If you can't say what the SMS is about in five plain words ("the page on forecast accuracy"), the SMS is too compressed to send.
 
 ## Output format
 

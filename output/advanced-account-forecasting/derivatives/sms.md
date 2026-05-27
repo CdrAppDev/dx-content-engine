@@ -1,3 +1,3 @@
-After our chat — sending the brief on moving forecast accuracy. The bad-fit signals at the bottom are the parts most decks skip. 15 min next week? {short-url}
+Great talking yesterday — here's the page I mentioned on moving forecast accuracy. 15 min next week to walk through it? {short-url}
 
-(char count: 154/160 — assumes a ~22-char short URL replacing `{short-url}`)
+(char count: 122/160 — assumes a ~22-char short URL replacing `{short-url}`)
