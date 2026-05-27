@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "../design-system/tokens.css";
+
+/* DX Foundation base — see src/design-system/tokens.css for all tokens. */
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--dxf-red-100);
+  color: var(--dxf-red-700);
+}

@@ -1,0 +1,14 @@
+node_modules
+.next
+.env
+.env.local
+.env*.local
+.DS_Store
+*.log
+.pnpm-store
+out
+build
+dist
+
+# Skill-creator workspace (regenerable, sometimes contains API-key-protected runs)
+skills/_optimization/

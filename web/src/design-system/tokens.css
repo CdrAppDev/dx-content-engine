@@ -1,0 +1,139 @@
+/* DX Foundation — Design Tokens
+ * Colors + Type. Source of truth for the design system.
+ * Sampled directly from dxfoundation.com brand assets.
+ */
+
+/* Webfonts loaded via next/font in layout.tsx as
+ * --font-sora, --font-inter-tight, --font-jetbrains-mono. */
+
+:root {
+  /* ─────────── BRAND PALETTE (raw) ─────────── */
+  /* Primary action / accent — the signature DX red-pink. */
+  --dxf-red:           #EE3257;
+  --dxf-red-700:       #C9214A;
+  --dxf-red-300:       #F7768E;
+  --dxf-red-100:       #FDD9E0;
+
+  /* Navy — primary text + dark surfaces. */
+  --dxf-navy:          #0F2543;
+  --dxf-navy-800:      #1A2F50;
+  --dxf-navy-600:      #4A5A75;
+  --dxf-navy-400:      #8593A8;
+
+  /* Cream — primary background. */
+  --dxf-cream:         #FDF6F3;
+  --dxf-cream-deep:    #F9E8DA;  /* warmer beige (halftone source) */
+  --dxf-beige-halftone:#F0E2C8;
+
+  /* Dusty blue clouds. */
+  --dxf-cloud:         #BCD0EA;
+  --dxf-cloud-light:   #DCE7F2;
+  --dxf-cloud-deep:    #8FA9C9;
+
+  /* Periwinkle accent (sparkles + secondary marks). */
+  --dxf-peri:          #8B8FD8;
+  --dxf-peri-light:    #B6B9E7;
+  --dxf-peri-dark:     #5C61B8;
+
+  /* ─────────── SEMANTIC COLORS ─────────── */
+  /* Surfaces */
+  --bg:                var(--dxf-cream);
+  --bg-alt:            #FFFFFF;
+  --bg-deep:           var(--dxf-cream-deep);
+  --bg-inverse:        var(--dxf-navy);
+  --surface-card:      #FFFFFF;
+  --surface-sunken:    #F4ECE7;
+  --surface-overlay:   rgba(15, 37, 67, 0.6);
+
+  /* Text */
+  --fg-1:              var(--dxf-navy);          /* primary text */
+  --fg-2:              var(--dxf-navy-600);      /* secondary / labels */
+  --fg-3:              var(--dxf-navy-400);      /* tertiary / placeholder */
+  --fg-on-dark:        var(--dxf-cream);
+  --fg-on-red:         #FFFFFF;
+  --fg-link:           var(--dxf-red);
+  --fg-accent:         var(--dxf-red);
+
+  /* Borders & dividers */
+  --border-1:          rgba(15, 37, 67, 0.10);
+  --border-2:          rgba(15, 37, 67, 0.18);
+  --border-strong:     var(--dxf-navy);
+  --border-focus:      var(--dxf-red);
+
+  /* Status (extrapolated to harmonize with palette) */
+  --status-success:    #2F8F6E;
+  --status-success-bg: #DCEFE6;
+  --status-warning:    #C68A1F;
+  --status-warning-bg: #F8EAC9;
+  --status-danger:     var(--dxf-red);
+  --status-danger-bg:  var(--dxf-red-100);
+  --status-info:       var(--dxf-peri-dark);
+  --status-info-bg:    #E5E6F6;
+
+  /* ─────────── TYPE FAMILIES ─────────── */
+  --font-display:  var(--font-sora, "Sora"), "TT Travels Next", system-ui, sans-serif;
+  --font-body:     var(--font-inter-tight, "Inter Tight"), system-ui, sans-serif;
+  --font-mono:     var(--font-jetbrains-mono, "JetBrains Mono"), ui-monospace, "Menlo", monospace;
+
+  /* ─────────── TYPE SCALE (semantic) ─────────── */
+  --fs-display:    72px;  --lh-display: 1.04; --tr-display: -0.025em; --fw-display: 800;
+  --fs-h1:         48px;  --lh-h1:      1.08; --tr-h1:      -0.022em; --fw-h1:      800;
+  --fs-h2:         36px;  --lh-h2:      1.12; --tr-h2:      -0.018em; --fw-h2:      700;
+  --fs-h3:         24px;  --lh-h3:      1.20; --tr-h3:      -0.012em; --fw-h3:      700;
+  --fs-h4:         18px;  --lh-h4:      1.30; --tr-h4:      -0.005em; --fw-h4:      600;
+  --fs-body:       16px;  --lh-body:    1.55; --tr-body:    0;        --fw-body:    400;
+  --fs-body-sm:    14px;  --lh-body-sm: 1.50; --tr-body-sm: 0;        --fw-body-sm: 400;
+  --fs-caption:    12px;  --lh-caption: 1.40; --tr-caption: 0.01em;   --fw-caption: 500;
+  --fs-eyebrow:    12px;  --lh-eyebrow: 1.20; --tr-eyebrow: 0.14em;   --fw-eyebrow: 700;
+
+  /* ─────────── SPACING (8pt grid) ─────────── */
+  --sp-0:  0;
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-7:  32px;
+  --sp-8:  40px;
+  --sp-9:  56px;
+  --sp-10: 80px;
+  --sp-11: 120px;
+
+  /* ─────────── RADII ─────────── */
+  --r-xs:    4px;
+  --r-sm:    8px;
+  --r-md:    12px;
+  --r-lg:    20px;
+  --r-xl:    32px;
+  --r-pill:  999px;
+
+  /* ─────────── ELEVATION ─────────── */
+  --shadow-1: 0 1px 2px rgba(15, 37, 67, 0.06), 0 1px 1px rgba(15, 37, 67, 0.04);
+  --shadow-2: 0 4px 12px rgba(15, 37, 67, 0.08), 0 1px 2px rgba(15, 37, 67, 0.04);
+  --shadow-3: 0 14px 32px rgba(15, 37, 67, 0.12), 0 2px 6px rgba(15, 37, 67, 0.06);
+  --shadow-glow-red: 0 0 0 4px rgba(238, 50, 87, 0.18);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  /* ─────────── MOTION ─────────── */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --dur-fast:    140ms;
+  --dur-base:    220ms;
+  --dur-slow:    420ms;
+}
+
+/* ─────────── SEMANTIC TYPE CLASSES ─────────── */
+.dxf-display { font-family: var(--font-display); font-size: var(--fs-display); line-height: var(--lh-display); letter-spacing: var(--tr-display); font-weight: var(--fw-display); color: var(--fg-1); }
+.dxf-h1      { font-family: var(--font-display); font-size: var(--fs-h1);      line-height: var(--lh-h1);      letter-spacing: var(--tr-h1);      font-weight: var(--fw-h1);      color: var(--fg-1); }
+.dxf-h2      { font-family: var(--font-display); font-size: var(--fs-h2);      line-height: var(--lh-h2);      letter-spacing: var(--tr-h2);      font-weight: var(--fw-h2);      color: var(--fg-1); }
+.dxf-h3      { font-family: var(--font-display); font-size: var(--fs-h3);      line-height: var(--lh-h3);      letter-spacing: var(--tr-h3);      font-weight: var(--fw-h3);      color: var(--fg-1); }
+.dxf-h4      { font-family: var(--font-body);    font-size: var(--fs-h4);      line-height: var(--lh-h4);      letter-spacing: var(--tr-h4);      font-weight: var(--fw-h4);      color: var(--fg-1); }
+.dxf-body    { font-family: var(--font-body);    font-size: var(--fs-body);    line-height: var(--lh-body);    color: var(--fg-1); }
+.dxf-body-sm { font-family: var(--font-body);    font-size: var(--fs-body-sm); line-height: var(--lh-body-sm); color: var(--fg-2); }
+.dxf-caption { font-family: var(--font-body);    font-size: var(--fs-caption); line-height: var(--lh-caption); letter-spacing: var(--tr-caption); font-weight: var(--fw-caption); color: var(--fg-2); }
+.dxf-eyebrow { font-family: var(--font-display); font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow); letter-spacing: var(--tr-eyebrow); font-weight: var(--fw-eyebrow); text-transform: uppercase; color: var(--fg-accent); }
+.dxf-mono    { font-family: var(--font-mono);    font-size: 13px; line-height: 1.5; }
+
+/* Reusable base */
+html, body { background: var(--bg); color: var(--fg-1); font-family: var(--font-body); font-size: var(--fs-body); line-height: var(--lh-body); }

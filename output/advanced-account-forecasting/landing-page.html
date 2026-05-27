@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stop Negotiating Your Forecast. Compute It. — DX Foundation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dxf-red: #EE3257;
+  --dxf-red-700: #C9214A;
+  --dxf-red-100: #FDD9E0;
+  --dxf-navy: #0F2543;
+  --dxf-navy-600: #4A5A75;
+  --dxf-navy-400: #8593A8;
+  --dxf-cream: #FDF6F3;
+  --dxf-cream-deep: #F9E8DA;
+  --dxf-cloud-light: #DCE7F2;
+  --dxf-peri: #8B8FD8;
+  --bg: var(--dxf-cream);
+  --bg-alt: #FFFFFF;
+  --surface-card: #FFFFFF;
+  --surface-sunken: #F4ECE7;
+  --fg-1: var(--dxf-navy);
+  --fg-2: var(--dxf-navy-600);
+  --fg-3: var(--dxf-navy-400);
+  --fg-on-dark: var(--dxf-cream);
+  --fg-accent: var(--dxf-red);
+  --border-1: rgba(15, 37, 67, 0.10);
+  --border-2: rgba(15, 37, 67, 0.18);
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-body: "Inter Tight", system-ui, sans-serif;
+  --shadow-1: 0 1px 2px rgba(15,37,67,0.06), 0 1px 1px rgba(15,37,67,0.04);
+  --shadow-2: 0 4px 12px rgba(15,37,67,0.08), 0 1px 2px rgba(15,37,67,0.04);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--dxf-red-100); color: var(--dxf-red-700); }
+
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border-1);
+}
+.topnav .wordmark { height: 28px; width: auto; display: block; }
+.topnav nav { display: flex; gap: 8px; align-items: center; }
+.topnav nav a {
+  font: 600 13px/1 var(--font-body);
+  color: var(--fg-2);
+  text-decoration: none;
+  padding: 7px 12px;
+  border-radius: 8px;
+  transition: all 140ms var(--ease-out);
+}
+.topnav nav a:hover { color: var(--fg-1); background: var(--surface-sunken); }
+
+.container { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+
+.hero {
+  position: relative;
+  padding: 80px 0 56px;
+  overflow: hidden;
+}
+.hero .halftone {
+  position: absolute;
+  top: -40px;
+  right: -160px;
+  width: 560px;
+  height: 420px;
+  background: url('stars-radial-beige.png') no-repeat right top / contain;
+  opacity: 0.75;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero .inner { position: relative; z-index: 1; }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 700 12px/1 var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--dxf-red);
+  margin-bottom: 20px;
+}
+.eyebrow svg { width: 14px; height: 14px; }
+h1.display {
+  margin: 0;
+  font: 800 56px/1.05 var(--font-display);
+  letter-spacing: -0.022em;
+  color: var(--fg-1);
+  max-width: 760px;
+}
+.hero-sub {
+  margin: 20px 0 0;
+  max-width: 640px;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--fg-2);
+}
+.cta-row { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--dxf-red);
+  color: #fff;
+  font: 600 15px/1 var(--font-body);
+  padding: 14px 24px;
+  border: 0;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 140ms var(--ease-out);
+}
+.btn-primary:hover { background: var(--dxf-red-700); }
+.btn-primary svg { width: 16px; height: 16px; }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--fg-1);
+  font: 600 15px/1 var(--font-body);
+  padding: 13px 22px;
+  border: 1px solid var(--dxf-navy);
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 140ms var(--ease-out);
+}
+.btn-secondary:hover { background: var(--dxf-navy); color: #fff; }
+
+section.block {
+  padding: 56px 0;
+  border-top: 1px solid var(--border-1);
+}
+h2.section {
+  margin: 0 0 24px;
+  font: 700 36px/1.12 var(--font-display);
+  letter-spacing: -0.018em;
+  color: var(--fg-1);
+}
+h3.sub {
+  margin: 32px 0 8px;
+  font: 600 18px/1.3 var(--font-body);
+  color: var(--fg-1);
+}
+.body-text { font-size: 16px; line-height: 1.65; color: var(--fg-1); }
+.body-text strong { color: var(--fg-1); font-weight: 700; }
+.body-text p { margin: 0 0 16px; }
+.body-text p:last-child { margin-bottom: 0; }
+
+ul.outcomes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+ul.outcomes li {
+  position: relative;
+  padding: 16px 20px 16px 52px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-1);
+  border-radius: 12px;
+  box-shadow: var(--shadow-1);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fg-1);
+}
+ul.outcomes li::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background: var(--dxf-red);
+  clip-path: polygon(50% 0%, 56.7% 43.3%, 100% 50%, 56.7% 56.7%, 50% 100%, 43.3% 56.7%, 0% 50%, 43.3% 43.3%);
+}
+
+.bad-fit { background: var(--surface-sunken); border-radius: 16px; padding: 32px; }
+.bad-fit h2.section { margin-bottom: 12px; }
+.bad-fit .lede { color: var(--fg-2); margin: 0 0 20px; font-size: 16px; }
+.bad-fit ul { padding-left: 20px; margin: 0; }
+.bad-fit li { margin-bottom: 12px; color: var(--fg-2); }
+.bad-fit li strong { color: var(--fg-1); }
+
+.close-cta {
+  background: var(--dxf-navy);
+  color: var(--fg-on-dark);
+  border-radius: 20px;
+  padding: 56px 48px;
+  position: relative;
+  overflow: hidden;
+  margin: 56px 0;
+}
+.close-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 90% 20%, rgba(238,50,87,0.18) 0%, transparent 40%),
+    radial-gradient(circle at 10% 80%, rgba(139,143,216,0.22) 0%, transparent 40%);
+  pointer-events: none;
+}
+.close-cta .inner { position: relative; max-width: 640px; }
+.close-cta h2 {
+  margin: 0 0 16px;
+  font: 700 32px/1.15 var(--font-display);
+  letter-spacing: -0.014em;
+  color: var(--fg-on-dark);
+}
+.close-cta p {
+  margin: 0 0 28px;
+  color: rgba(253, 246, 243, 0.85);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+footer.foot {
+  padding: 40px 32px;
+  text-align: center;
+  color: var(--fg-3);
+  font: 500 12px/1.5 var(--font-body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--border-1);
+  background: var(--bg);
+}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <img src="wordmark-dark.webp" alt="DX Foundation" class="wordmark">
+  <nav>
+    <a href="#">Strategy</a>
+    <a href="#">Services</a>
+    <a href="#">Partners</a>
+    <a href="#">Insights</a>
+  </nav>
+</header>
+
+<main>
+  <div class="container">
+
+    <section class="hero">
+      <div class="halftone"></div>
+      <div class="inner">
+        <span class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0 L13.6 10.4 L24 12 L13.6 13.6 L12 24 L10.4 13.6 L0 12 L10.4 10.4 Z"/></svg>
+          For Operations Leaders
+        </span>
+        <h1 class="display">Stop Negotiating Your Forecast. Compute It.</h1>
+        <p class="hero-sub">You can&rsquo;t run S&amp;OP on a forecast assembled from four spreadsheets and a Monday meeting. Your operations team can&rsquo;t deliver against it. Your CFO can&rsquo;t defend it. Your channel partners aren&rsquo;t in it.</p>
+        <div class="cta-row">
+          <a href="#talk" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0 L13.6 10.4 L24 12 L13.6 13.6 L12 24 L10.4 13.6 L0 12 L10.4 10.4 Z"/></svg>
+            Talk to a Strategist
+          </a>
+          <a href="#shift" class="btn-secondary">See How It Works</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="shift" class="block">
+      <h2 class="section">The Shift</h2>
+      <div class="body-text">
+        <p><strong>Before.</strong> Forecasts get built in spreadsheets, owned by different functions, and reconciled in a weekly meeting. The number that lands in the board pack is negotiated &mdash; not computed. Your operations team plans against one version, your sales team commits to another, and your channel partners never see the consolidated view at all. When a market shift hits, you can&rsquo;t re-run the forecast inside a week &mdash; and there&rsquo;s no audit trail when leadership asks how the number was built.</p>
+        <p><strong>After.</strong> One forecast surface &mdash; sliced by every dimension your business actually plans against. Each function adjusts during a defined window. The Monday meeting drops to fifteen minutes because the system did the reconciliation. The audit trail is automatic. The forecast re-runs on schedule or on demand. Your channel partners contribute their signal directly.</p>
+        <p>This isn&rsquo;t a system upgrade. It&rsquo;s a change in how your company produces the most important number it makes &mdash; and the technology follows the change, not the other way around.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="section">Our Approach</h2>
+      <div class="body-text">
+        <h3 class="sub">Start with the metric you&rsquo;re on the hook to move</h3>
+        <p>Before any technology decision, we name the specific number &mdash; forecast accuracy, working capital tied up in inventory, customer-commitment delivery rate, days-to-revise-forecast. The number anchors the engagement. Everything downstream follows from it.</p>
+
+        <h3 class="sub">Architect the forecast itself</h3>
+        <p>Dimensions and measures aren&rsquo;t a configuration task &mdash; they&rsquo;re a strategic decision about how your business sees itself. We sit with your operations, finance, and revenue teams and design the forecast that matches how you actually plan: product hierarchies, ship-from locations, territories, business units, channel partners. The technical build comes after this work, not in place of it.</p>
+
+        <h3 class="sub">Pick the smallest change that moves the number</h3>
+        <p>Sometimes that means standing up a new forecasting system. Sometimes it means integrating signal feeds between systems you already run. Sometimes it means fixing the operating model before any system change at all. We pick the path with the largest outcome and the smallest surface area &mdash; and we tell you which one your situation actually needs.</p>
+
+        <h3 class="sub">Implement with senior practitioners</h3>
+        <p>The people in the pitch are the people in the build. No bench, no junior handoff. The technically gnarly work that derails most engagements doesn&rsquo;t derail ours because we do it ourselves.</p>
+
+        <h3 class="sub">Tie success to the business case</h3>
+        <p>The SOW closes on the outcome you committed to &mdash; forecast-accuracy delta, working-capital release, stockout reduction &mdash; not on the go-live date. If we don&rsquo;t move the number, the engagement isn&rsquo;t done.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="section">What You Can Expect</h2>
+      <ul class="outcomes">
+        <li>One consolidated forecast grid sliced by every dimension your business actually plans against</li>
+        <li>Role-based adjustment windows so sales, operations, finance, and channel partners all contribute &mdash; without overwriting each other</li>
+        <li>Forecast revisions in hours, not days, when a market shift hits</li>
+        <li>A defensible audit trail your board can read</li>
+        <li>Working capital released as inventory positioning catches up to actual demand</li>
+        <li>Channel partner demand signals flowing into the consolidated forecast for the first time</li>
+      </ul>
+    </section>
+
+    <section class="block bad-fit">
+      <h2 class="section">When This Isn&rsquo;t the Right Fit</h2>
+      <p class="lede">We won&rsquo;t pitch you a result we can&rsquo;t deliver. This approach doesn&rsquo;t land if any of these apply:</p>
+      <ul>
+        <li><strong>You already run a mature, trusted demand-planning system</strong> that your team has invested years in. Better fit: integrate the signals from your customer system into that platform. Don&rsquo;t duplicate the workload.</li>
+        <li><strong>Your sales motion is purely transactional.</strong> Spot sales don&rsquo;t generate enough relationship signal for multi-dimensional forecasting to add lift.</li>
+        <li><strong>Your S&amp;OP cadence is already mature</strong> &mdash; monthly cross-functional meeting, named owners by function, forecast accuracy above eighty-five percent. The marginal lift over a working process doesn&rsquo;t justify the cost.</li>
+        <li><strong>Your customer system doesn&rsquo;t have your customer commitments, channel-partner relationships, and sales agreements structured in it yet.</strong> That&rsquo;s a foundational project, not a forecasting one &mdash; and we&rsquo;d start there.</li>
+        <li><strong>Your team doesn&rsquo;t have the analytical-engineering capability to run multi-dimensional data transformations.</strong> That capability gap needs solving before any system goes in.</li>
+      </ul>
+    </section>
+
+    <section id="talk" class="close-cta">
+      <div class="inner">
+        <h2>Ready to Pressure-Test Your Forecast?</h2>
+        <p>Bring us your current forecast accuracy and the number you&rsquo;re trying to move. In a thirty-minute conversation we&rsquo;ll tell you what&rsquo;s possible &mdash; and whether the gap is in the technology, the operating model, or somewhere else entirely.</p>
+        <a href="#" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0 L13.6 10.4 L24 12 L13.6 13.6 L12 24 L10.4 13.6 L0 12 L10.4 10.4 Z"/></svg>
+          Talk to a Strategist
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">DX Foundation &middot; Strategy First. Technology Second.</footer>
+
+</body>
+</html>
